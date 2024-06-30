@@ -422,13 +422,21 @@ void UAdvancedSessionsLibrary::UniqueNetIdToString(const FBPUniqueNetId& UniqueN
 {
 	const FUniqueNetId * ID = UniqueNetId.GetUniqueNetId();
 
+#if WITH_EDITOR
+	String = "Editor PIE Test";
+	return;
+#else
 	if ( !ID )
 	{
 		UE_LOG(AdvancedSessionsLog, Warning, TEXT("UniqueNetIdToString received a bad UniqueNetId!"));
 		String = "ERROR, BAD UNIQUE NET ID";
 	}
 	else
+	{
 		String = ID->ToString();
+    }
+
+#endif
 }
 
 
