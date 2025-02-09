@@ -421,11 +421,7 @@ void UAdvancedSessionsLibrary::GetNetPlayerIndex(APlayerController *PlayerContro
 void UAdvancedSessionsLibrary::UniqueNetIdToString(const FBPUniqueNetId& UniqueNetId, FString &String)
 {
 	const FUniqueNetId * ID = UniqueNetId.GetUniqueNetId();
-
-#if WITH_EDITOR
-	String = "Editor PIE Test";
-	return;
-#else
+	
 	if ( !ID )
 	{
 		UE_LOG(AdvancedSessionsLog, Warning, TEXT("UniqueNetIdToString received a bad UniqueNetId!"));
@@ -434,9 +430,7 @@ void UAdvancedSessionsLibrary::UniqueNetIdToString(const FBPUniqueNetId& UniqueN
 	else
 	{
 		String = ID->ToString();
-    }
-
-#endif
+	}
 }
 
 
